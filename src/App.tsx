@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Form from './components/Form';
+import NoteList from './components/NoteList';
+import { Note } from './util/interfaces';
+
+const App = (): JSX.Element => {
+    const [notes, setNotes] = useState<Note[]>([]);
+
+    const handleDelete = (id: number): void => {
+        const notesToKeep = notes.filter((note: Note): boolean => note.id !== id);
+        setNotes(notesToKeep);
+    };
+
+    return (
+        <div>
+            <h1>Take notes</h1>
+            <Form notes={notes} setNotes={setNotes} />
+            <NoteList notes={notes} handleDelete={handleDelete} />
+        </div>
+    );
+};
 
 export default App;
