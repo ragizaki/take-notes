@@ -30,7 +30,13 @@ const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
                 <div>
                     <label>
                         Title
-                        <input type='text' name='title' value={title} onChange={e => setTitle(e.target.value)} />
+                        <input
+                            type='text'
+                            name='title'
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            required
+                        />
                     </label>
                 </div>
                 <div>
@@ -41,6 +47,7 @@ const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
                             name='description'
                             value={description}
                             onChange={e => setDescription(e.target.value)}
+                            required
                         />
                     </label>
                 </div>

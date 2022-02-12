@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React from 'react';
 import { Note } from '../util/interfaces';
 
 interface INoteListProps {
@@ -31,9 +31,7 @@ const NoteList = ({ noteSearch, notes, handleDelete }: INoteListProps): JSX.Elem
             </li>
         ));
 
-    const memoizedItems = useCallback(() => listItems, [listItems]);
-
-    return <ul>{memoizedItems}</ul>;
+    return <ul>{listItems}</ul>;
 };
 
 export default NoteList;
