@@ -6,7 +6,7 @@ type IFormProps = {
     setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
 };
 
-const Form = ({ notes, setNotes }: IFormProps): JSX.Element => {
+const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
@@ -19,6 +19,8 @@ const Form = ({ notes, setNotes }: IFormProps): JSX.Element => {
             created: new Date(),
         };
         setNotes([...notes, note]);
+        setTitle('');
+        setDescription('');
     };
 
     return (
@@ -46,6 +48,6 @@ const Form = ({ notes, setNotes }: IFormProps): JSX.Element => {
             </form>
         </div>
     );
-};
+});
 
 export default Form;
