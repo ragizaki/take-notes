@@ -8,6 +8,14 @@ import { Note } from './util/interfaces';
 const App = (): JSX.Element => {
     const [notes, setNotes] = useState<Note[]>([]);
     const [noteSearch, setNoteSearch] = useState<string>('');
+    const [classes, setClasses] = useState<string[]>([]);
+
+    const onAddClick = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setClasses([...classes, e.target.value]);
+        },
+        [setClasses]
+    );
 
     const handleNoteSearch = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
