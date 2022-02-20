@@ -1,4 +1,6 @@
 import React from 'react';
+import { InputAdornment, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 type ISearchProps = {
     value: string;
@@ -6,10 +8,21 @@ type ISearchProps = {
 };
 
 const SearchBar = ({ value, handleSearch }: ISearchProps): JSX.Element => {
-    console.log('rendered');
     return (
         <div>
-            <input value={value} onChange={handleSearch} type='text' placeholder='Search by title' />
+            <TextField
+                variant='standard'
+                value={value}
+                onChange={handleSearch}
+                label='Filter by title'
+                InputProps={{
+                    endAdornment: (
+                        <InputAdornment position='start'>
+                            <SearchIcon />
+                        </InputAdornment>
+                    ),
+                }}
+            />
         </div>
     );
 };
