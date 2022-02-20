@@ -1,5 +1,7 @@
 import React from 'react';
 import { Note } from '../../util/interfaces';
+import NoteCard from './NoteCard';
+import { Card, CardActions, CardContent, Button, Typography, Grid } from '@mui/material';
 
 interface INoteListProps {
     noteSearch: string;
@@ -17,21 +19,16 @@ const NoteList = ({ noteSearch, notes, handleDelete }: INoteListProps): JSX.Elem
             return title.toLowerCase().includes(noteSearch.toLowerCase());
         })
         .map((note: Note) => (
-            <li key={note.id}>
-                <h2>{note.title}</h2>
-                <p>{note.description}</p>
-                <p>
-                    {new Intl.DateTimeFormat('en-GB', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: '2-digit',
-                    }).format(note.created)}
-                </p>
-                <button onClick={() => handleDelete(note.id)}>Delete</button>
-            </li>
+            <Grid item xs={12} md={6}>
+                <NoteCard note={note} handleDelete={handleDelete} />
+            </Grid>
         ));
 
-    return <ul>{listItems}</ul>;
+    return (
+        <Grid container spacing={2}>
+            {listItems}
+        </Grid>
+    );
 };
 
 export default NoteList;

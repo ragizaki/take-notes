@@ -32,10 +32,10 @@ const App: React.FC = () => {
     };
 
     return (
-        <Container>
-            <Form notes={notes} setNotes={setNotes} />
+        <Container sx={{ marginBottom: 4 }}>
             <SearchBar value={noteSearch} handleSearch={handleNoteSearch} />
             <NoteList notes={notes} noteSearch={noteSearch} handleDelete={handleDelete} />
+            <Form notes={notes} setNotes={setNotes} />
         </Container>
     );
 };
