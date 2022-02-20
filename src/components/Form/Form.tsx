@@ -14,7 +14,7 @@ const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
 
     const handleFormSubmit = (e: React.FormEvent): void => {
         e.preventDefault();
-        if (!title) {
+        if (!title || !description) {
             return setShowAlert(true);
         }
         const note = {
@@ -34,7 +34,7 @@ const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
             <h1>Create Note</h1>
             {showAlert && (
                 <Alert severity='error' onClose={() => setShowAlert(false)}>
-                    Title field is mandatory to make a note.
+                    All fields are mandatory to make a note.
                 </Alert>
             )}
             <form onSubmit={handleFormSubmit} noValidate>

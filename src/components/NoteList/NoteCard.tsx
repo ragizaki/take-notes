@@ -9,7 +9,7 @@ interface INoteProps {
 
 const NoteCard = ({ note, handleDelete }: INoteProps): JSX.Element => {
     return (
-        <Card>
+        <Card sx={{ backgroundColor: '#f5f3f4' }}>
             <CardContent>
                 <h2>{note.title}</h2>
                 <p>{note.description}</p>

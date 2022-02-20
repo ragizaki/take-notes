@@ -1,7 +1,6 @@
-import React from 'react';
 import { Note } from '../../util/interfaces';
 import NoteCard from './NoteCard';
-import { Card, CardActions, CardContent, Button, Typography, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 
 interface INoteListProps {
     noteSearch: string;
@@ -19,7 +18,7 @@ const NoteList = ({ noteSearch, notes, handleDelete }: INoteListProps): JSX.Elem
             return title.toLowerCase().includes(noteSearch.toLowerCase());
         })
         .map((note: Note) => (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} key={note.id}>
                 <NoteCard note={note} handleDelete={handleDelete} />
             </Grid>
         ));
