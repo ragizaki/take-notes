@@ -1,11 +1,13 @@
 import React, { useState, useCallback } from 'react';
 
-import Form from './components/Form';
-import NoteList from './components/NoteList';
-import SearchBar from './components/SearchBar';
+import Form from './components/Form/Form';
+import NoteList from './components/NoteList/NoteList';
+import SearchBar from './components/SearchBar/SearchBar';
 import { Note } from './util/interfaces';
 
-const App = (): JSX.Element => {
+import Container from '@mui/material/Container';
+
+const App: React.FC = () => {
     const [notes, setNotes] = useState<Note[]>([]);
     const [noteSearch, setNoteSearch] = useState<string>('');
     const [classes, setClasses] = useState<string[]>([]);
@@ -30,12 +32,11 @@ const App = (): JSX.Element => {
     };
 
     return (
-        <div>
-            <h1>Take notes</h1>
+        <Container>
             <Form notes={notes} setNotes={setNotes} />
             <SearchBar value={noteSearch} handleSearch={handleNoteSearch} />
             <NoteList notes={notes} noteSearch={noteSearch} handleDelete={handleDelete} />
-        </div>
+        </Container>
     );
 };
 

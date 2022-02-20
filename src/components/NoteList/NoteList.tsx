@@ -1,5 +1,5 @@
 import React from 'react';
-import { Note } from '../util/interfaces';
+import { Note } from '../../util/interfaces';
 
 interface INoteListProps {
     noteSearch: string;
