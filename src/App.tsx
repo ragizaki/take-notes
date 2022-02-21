@@ -21,7 +21,7 @@ const App: React.FC = () => {
         (e: React.ChangeEvent<HTMLInputElement>) => {
             setClasses([...classes, e.target.value]);
         },
-        [setClasses]
+        [setClasses, classes]
     );
 
     const handleNoteSearch = useCallback(
