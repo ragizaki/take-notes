@@ -39,7 +39,10 @@ const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
                     All fields are mandatory to make a note.
                 </Alert>
             )}
-            <form onSubmit={handleFormSubmit} noValidate>
+            <form
+                onSubmit={handleFormSubmit}
+                onKeyPress={e => e.key === 'Enter' && handleFormSubmit(e)}
+                noValidate>
                 <Stack spacing={2}>
                     <TextField
                         value={title}
