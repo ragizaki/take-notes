@@ -11,6 +11,11 @@ const App: React.FC = () => {
     const [notes, setNotes] = useState<Note[]>([]);
     const [noteSearch, setNoteSearch] = useState<string>('');
     const [classes, setClasses] = useState<string[]>([]);
+    const [darkMode, setDarkMode] = useState<boolean>(false);
+
+    const toggleDarkMode = useCallback(() => {
+        setDarkMode(prevMode => !prevMode);
+    }, [setDarkMode]);
 
     const onAddClick = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +37,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <Container sx={{ my: 4 }}>
+        <Container sx={{ my: 4 }} maxWidth='md'>
             <Stack spacing={2}>
                 <SearchBar value={noteSearch} handleSearch={handleNoteSearch} />
                 <NoteList notes={notes} noteSearch={noteSearch} handleDelete={handleDelete} />

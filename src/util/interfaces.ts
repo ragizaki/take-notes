@@ -4,3 +4,9 @@ export interface Note {
     created: Date;
     id: number;
 }
+
+export interface Theme {
+    palette: {
+        mode: string;
+    };
+}

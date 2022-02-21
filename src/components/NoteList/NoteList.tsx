@@ -18,7 +18,7 @@ const NoteList = ({ noteSearch, notes, handleDelete }: INoteListProps): JSX.Elem
             return title.toLowerCase().includes(noteSearch.toLowerCase());
         })
         .map((note: Note) => (
-            <Grid item xs={12} md={6} key={note.id}>
+            <Grid item xs={11} md={6} key={note.id}>
                 <NoteCard note={note} handleDelete={handleDelete} />
             </Grid>
         ));

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Note } from '../../util/interfaces';
-import { TextField, Alert, Stack, Button } from '@mui/material';
+import { TextField, Alert, Stack, Button, Typography } from '@mui/material';
 
 type IFormProps = {
     notes: Note[];
@@ -31,9 +31,11 @@ const Form = React.memo(({ notes, setNotes }: IFormProps): JSX.Element => {
 
     return (
         <div>
-            <h1>Create Note</h1>
+            <Typography variant='h3' sx={{ mb: 2 }}>
+                Create Note
+            </Typography>
             {showAlert && (
-                <Alert severity='error' onClose={() => setShowAlert(false)}>
+                <Alert sx={{ mb: 3 }} severity='error' onClose={() => setShowAlert(false)}>
                     All fields are mandatory to make a note.
                 </Alert>
             )}
