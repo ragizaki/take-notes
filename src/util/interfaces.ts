@@ -1,12 +1,12 @@
 export interface Note {
     title: string;
     description: string;
-    created: Date;
+    due: Date;
     id: number;
 }
 
-export interface Theme {
-    palette: {
-        mode: string;
-    };
-}
+// export interface Theme {
+//     palette: {
+//         mode: string;
+//     };
+// }

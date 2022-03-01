@@ -14,11 +14,12 @@ const NoteCard = ({ note, handleDelete }: INoteProps): JSX.Element => {
                 <h2>{note.title}</h2>
                 <p>{note.description}</p>
                 <p>
+                    Due{' '}
                     {new Intl.DateTimeFormat('en-GB', {
                         year: 'numeric',
                         month: 'long',
                         day: '2-digit',
-                    }).format(note.created)}
+                    }).format(note.due)}
                 </p>
             </CardContent>
             <CardActions>
