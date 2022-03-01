@@ -7,11 +7,24 @@ import { Note } from './util/interfaces';
 
 import { Container, Stack } from '@mui/material';
 
+const NOTES_KEY = 'NOTES_KEY';
+
 const App: React.FC = () => {
     const [notes, setNotes] = useState<Note[]>([]);
     const [noteSearch, setNoteSearch] = useState<string>('');
     const [classes, setClasses] = useState<string[]>([]);
     const [darkMode, setDarkMode] = useState<boolean>(false);
+
+    useEffect(() => {
+        const savedNotes = localStorage.getItem(NOTES_KEY);
+        if (savedNotes) {
+            setNotes(JSON.parse(savedNotes));
+        }
+    }, []);
+
+    window.addEventListener('beforeunload', () => {
+        localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+    });
 
     const toggleDarkMode = useCallback(() => {
         setDarkMode(prevMode => !prevMode);
