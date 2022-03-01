@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Note } from '../../util/interfaces';
-import { TextField, Alert, Stack, Button, Typography } from '@mui/material';
+import { TextField, Alert, Stack, Button, Typography, Grid } from '@mui/material';
+
+// DatePicker
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 type IFormProps = {
     notes: Note[];
@@ -45,25 +49,36 @@ const Form = React.memo(
                     onSubmit={handleFormSubmit}
                     onKeyPress={e => e.key === 'Enter' && handleFormSubmit(e)}
                     noValidate>
-                    <Stack spacing={2}>
-                        <TextField
-                            value={title}
-                            label='Title'
-                            onChange={e => setTitle(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            value={description}
-                            label='Description'
-                            onChange={e => setDescription(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                        <Button variant='contained' color='info' type='submit'>
-                            Submit
-                        </Button>
-                    </Stack>
+                    <Grid container spacing={2}>
+                        <Grid item xs={8}>
+                            <TextField
+                                value={title}
+                                label='Title'
+                                onChange={e => setTitle(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <DatePicker
+                                selected={dueDate}
+                                onChange={(date: Date) => setDueDate(date)}
+                                showTimeSelect
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                value={description}
+                                label='Description'
+                                onChange={e => setDescription(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </Grid>
+                    </Grid>
+                    <Button sx={{ marginTop: '1rem' }} fullWidth variant='contained' color='info' type='submit'>
+                        Submit
+                    </Button>
                 </form>
             </div>
         );
